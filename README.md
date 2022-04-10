@@ -17,10 +17,10 @@
 | ------------ | -------------------------------- | -------------- | --------------------------- |
 | fake-hwclock | `services.fake-hwclock.enable`   | boolean        | Fake hardware clock service |
 | mosdns       | `services.mosdns.enable`         | boolean        | mosdns service              |
-|              | `services.mosdns.config`         | JSON value     |                             |
+|              | `services.mosdns.config`         | YAML value     |                             |
 |              | `services.mosdns.configFile`     | string \| null |                             |
-| v2ray-next   | `services.v2ray-next.enable`     | boolean        | V2ray v5 service            |
-|              | `services.v2ray-next.config`     | YAML value     |                             |
+| v2ray-next   | `services.v2ray-next.enable`     | boolean        | V2Ray v5 service            |
+|              | `services.v2ray-next.config`     | JSON value     |                             |
 |              | `services.v2ray-next.configFile` | string \| null |                             |
 
 Some of the modules requires some packages declared above, hence requiring `.#overlays.default` to be applied.
