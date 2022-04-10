@@ -4,5 +4,6 @@ let
   keys = [ system user ];
 in
 {
+  "mosdns.yaml.age".publicKeys = keys;
   "v2ray.jsonc.age".publicKeys = keys;
 }

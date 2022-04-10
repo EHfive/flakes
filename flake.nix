@@ -34,21 +34,20 @@
             overlays = [ self.overlays.default ];
           };
         in
-        nixpkgs.lib.recursiveUpdate
-          {
-            packages = myPkgs.packages pkgs;
-          }
-          {
-            apps = {
-              agenix = mkApp { drv = agenix.defaultPackage.${system}; };
-              deploy = deploy-rs.apps.${system}.deploy-rs;
-            };
-          }
+        {
+          packages = myPkgs.packages pkgs;
+          apps = {
+            agenix = mkApp { drv = agenix.defaultPackage.${system}; };
+            deploy = deploy-rs.apps.${system}.deploy-rs;
+          };
+        }
       )
     // {
       lib.utils = utils;
 
       overlays.default = myPkgs.overlay;
+
+      nixosModules = import ./modules;
 
       nixosConfigurations = {
         nixos-r2s = import ./machines/r2s {

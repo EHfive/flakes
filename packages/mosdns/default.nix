@@ -1,4 +1,12 @@
-{ lib, runCommand, buildGoModule, fetchFromGitHub, makeBinaryWrapper, symlinkJoin, v2ray-geoip, v2ray-domain-list-community }:
+{ lib
+, runCommand
+, buildGoModule
+, fetchFromGitHub
+, makeBinaryWrapper
+, symlinkJoin
+, v2ray-geoip
+, v2ray-domain-list-community
+}:
 let
   assetsDrv = symlinkJoin {
     name = "mosdns-assets";
@@ -20,6 +28,17 @@ let
     vendorSha256 = "2AF3ONhD6xH6m6QFmxRBUNsk6Nd8yrXVyCFjhDJDFx4=";
     doCheck = false;
 
+    buildPhase = ''
+      buildFlagsArray=(-v -p $NIX_BUILD_CORES -ldflags="-s -w")
+      runHook preBuild
+      go build "''${buildFlagsArray[@]}" -o mosdns ./
+      runHook postBuild
+    '';
+
+    installPhase = ''
+      install -Dm755 mosdns -t $out/bin
+    '';
+
     meta = with lib; {
       description = "A DNS proxy server";
       homepage = "https://github.com/IrineSistiana/mosdns";
@@ -29,6 +48,7 @@ let
 in
 runCommand "mosdns-${version}"
 {
+  inherit version;
   inherit (mosdns) meta;
   nativeBuildInputs = [ makeBinaryWrapper ];
 } ''

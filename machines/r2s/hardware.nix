@@ -38,6 +38,8 @@
     kernelModules = [ "ledtrig-netdev" ];
   };
 
+  services.fake-hwclock.enable = true;
+
   systemd.services."setup-net-leds" = {
     description = "Setup network LEDs";
     unitConfig = { DefaultDependencies = "no"; };

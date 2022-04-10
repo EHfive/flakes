@@ -25,8 +25,13 @@
     '';
   };
 
-  services.v2ray = {
+  services.v2ray-next = {
     enable = true;
     configFile = config.age.secrets.v2rayConfig.path;
+  };
+
+  services.mosdns = {
+    enable = true;
+    configFile = config.age.secrets.mosdnsConfig.path;
   };
 }

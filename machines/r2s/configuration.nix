@@ -1,5 +1,6 @@
 { config, pkgs, lib, ... }:
 {
+  age.secrets.mosdnsConfig.file = ./secrets/mosdns.yaml.age;
   age.secrets.v2rayConfig.file = ./secrets/v2ray.jsonc.age;
 
   nix = {

@@ -6,6 +6,9 @@ nixpkgs.lib.nixosSystem rec {
     ./networking.nix
     ./router.nix
     ./configuration.nix
+    self.nixosModules.fake-hwclock
+    self.nixosModules.mosdns
+    self.nixosModules.v2ray-next
     agenix.nixosModule
     {
       nix = {
