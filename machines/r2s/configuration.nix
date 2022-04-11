@@ -5,7 +5,6 @@
   age.secrets.v2rayConfig.file = ./secrets/v2ray.jsonc.age;
 
   nix = {
-    package = pkgs.nixVersions.stable;
     settings = {
       substituters = lib.mkBefore [ "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store" ];
       experimental-features = [ "nix-command" "flakes" ];

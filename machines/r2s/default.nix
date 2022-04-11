@@ -1,5 +1,8 @@
 { self, system ? "aarch64-linux", nixpkgs, agenix }:
-nixpkgs.lib.nixosSystem rec {
+let
+  inherit (nixpkgs) lib;
+in
+lib.nixosSystem rec {
   inherit system;
   modules = [
     ./configuration.nix
@@ -12,6 +15,7 @@ nixpkgs.lib.nixosSystem rec {
     self.nixosModules.v2ray-next
     agenix.nixosModule
     {
+      _module.args = { inherit nixpkgs; };
       nix = {
         nixPath = [ "nixpkgs=${nixpkgs}" ];
         registry.eh5.flake = self;
