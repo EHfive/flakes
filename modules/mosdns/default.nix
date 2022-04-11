@@ -12,7 +12,7 @@ in
   options.services.mosdns = {
     enable = mkEnableOption "mosdns service";
     configFile = mkOption {
-      type = types.nullOr types.str;
+      type = types.nullOr types.path;
       default = null;
       description = "The absolute path to the configuration file.";
     };

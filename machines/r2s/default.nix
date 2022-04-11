@@ -2,10 +2,11 @@
 nixpkgs.lib.nixosSystem rec {
   inherit system;
   modules = [
-    ./hardware.nix
-    ./networking.nix
-    ./router.nix
     ./configuration.nix
+    ./tproxy.nix
+    ./router.nix
+    ./networking.nix
+    ./hardware.nix
     self.nixosModules.fake-hwclock
     self.nixosModules.mosdns
     self.nixosModules.v2ray-next

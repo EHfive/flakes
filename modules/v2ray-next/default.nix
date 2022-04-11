@@ -20,7 +20,7 @@ in
   options.services.v2ray-next = {
     enable = mkEnableOption "V2Ray v5 service";
     configFile = mkOption {
-      type = types.nullOr types.str;
+      type = types.nullOr types.path;
       default = null;
       description = "The absolute path to the configuration file.";
     };
@@ -42,6 +42,8 @@ in
       after = [ "network.target" ];
       wantedBy = [ "multi-user.target" ];
       serviceConfig = {
+        # TODO: use `-confdir` so both `cfg.config` and `cfg.configFile` can be included,
+        #       and allows specifying multiple config files.
         ExecStart = "${v2rayBin} run -config ${configFile}";
       };
     };

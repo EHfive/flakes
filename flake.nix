@@ -59,6 +59,7 @@
       deploy.nodes.nixos-r2s = with deploy-rs.lib.aarch64-linux; {
         hostname = "r2s";
         sshUser = "root";
+        fastConnection = true;
         profiles.system.path = activate.nixos self.nixosConfigurations.nixos-r2s;
       };
     };

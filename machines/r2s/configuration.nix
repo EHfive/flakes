@@ -1,6 +1,7 @@
 { config, pkgs, lib, ... }:
 {
   age.secrets.mosdnsConfig.file = ./secrets/mosdns.yaml.age;
+  age.secrets.tproxyRule.file = ./secrets/tproxy.nft.age;
   age.secrets.v2rayConfig.file = ./secrets/v2ray.jsonc.age;
 
   nix = {
@@ -44,6 +45,6 @@
 
   environment.systemPackages = with pkgs; [
     htop
-    mosdns
+    lm_sensors
   ];
 }

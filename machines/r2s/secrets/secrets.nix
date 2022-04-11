@@ -4,6 +4,7 @@ let
   keys = [ system user ];
   files = [
     "mosdns.yaml.age"
+    "tproxy.nft.age"
     "v2ray.jsonc.age"
   ];
 in

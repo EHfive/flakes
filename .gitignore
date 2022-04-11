@@ -1,5 +1,9 @@
 # Build result
 result
 
-# IDE
+# IDE state files
 .vscode
+
+# Local files
+*.local
+*.todo

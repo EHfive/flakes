@@ -38,6 +38,12 @@
     kernelModules = [ "ledtrig-netdev" ];
   };
 
+  boot.kernel.sysctl = {
+    "vm.vfs_cache_pressure" = 10;
+    "vm.dirty_ratio" = 50;
+    "vm.swappiness" = 20;
+  };
+
   services.fake-hwclock.enable = true;
 
   systemd.services."setup-net-leds" = {
