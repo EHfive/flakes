@@ -49,6 +49,8 @@
     htop
     lm_sensors
     lsof
+    nix-du
     nodejs-17_x
+    usbutils
   ];
 }

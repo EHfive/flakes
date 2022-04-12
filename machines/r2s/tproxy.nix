@@ -33,10 +33,11 @@ in
   };
 
   systemd.services.update-chnroutes = {
-    serviceConfig = {
-      Type = "oneshot";
-      ExecStart = buildChnroutesSetScript;
-    };
+    serviceConfig.Type = "oneshot";
+    script = ''
+      ${buildChnroutesSetScript}
+      ${pkgs.systemd}/bin/systemctl reload setup-tproxy.service
+    '';
   };
 
   systemd.timers.update-chnroutes = {
