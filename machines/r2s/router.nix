@@ -1,7 +1,7 @@
 { config, pkgs, lib, ... }: {
   networking.nftables = {
     enable = true;
-    rulesetFile = ./nftables.nft;
+    rulesetFile = ./files/nftables.nft;
   };
   systemd.services.nftables = {
     wants = [ "systemd-udev-settle.service" ];
