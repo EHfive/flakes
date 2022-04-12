@@ -3,26 +3,54 @@ let
   nftBin = "${pkgs.nftables}/bin/nft";
   startScript = pkgs.writeScript "setup-tproxy-start" ''
     #!${nftBin} -f
+    table ip my_tproxy {}
+    flush table ip my_tproxy
     include "${config.age.secrets.tproxyRule.path}"
   '';
-  stopScript = pkgs.writeShellScript "setup-tproxy-stop" ''
-    ${nftBin} delete table ip my_tproxy || true
+  stopScript = pkgs.writeScript "setup-tproxy-stop" ''
+    #!${nftBin} -f
+    table ip my_tproxy {}
+    delete table ip my_tproxy
+  '';
+  buildChnroutesSetScript = pkgs.writeShellScript "build-chnroutes-set" ''
+    export PATH="$PATH''${PATH:+:}${pkgs.curl}/bin:${pkgs.gnused}/bin"
+    ${builtins.readFile ./build-chnroutes-set.sh}
   '';
 in
 {
   systemd.services.setup-tproxy = {
-    enable = true;
     bindsTo = [ "v2ray-next.service" ];
     after = [ "v2ray-next.service" ];
     wantedBy = [ "multi-user.target" ];
     serviceConfig = {
       Type = "oneshot";
       ExecStart = startScript;
+      ExecReload = startScript;
       ExecStop = stopScript;
       RemainAfterExit = true;
     };
     restartTriggers = [ config.age.secrets.tproxyRule.path ];
   };
+
+  systemd.services.update-chnroutes = {
+    serviceConfig = {
+      Type = "oneshot";
+      ExecStart = buildChnroutesSetScript;
+    };
+  };
+
+  systemd.timers.update-chnroutes = {
+    wantedBy = [ "timers.target" ];
+    timerConfig = {
+      OnCalendar = "daily";
+      RandomizedDelaySec = "60min";
+      Persistent = true;
+    };
+  };
+
+  system.activationScripts.update-chnroutes.text = ''
+    ${buildChnroutesSetScript} -a
+  '';
 
   systemd.network.networks."11-lo" = {
     name = "lo";

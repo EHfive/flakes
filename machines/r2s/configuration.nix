@@ -21,6 +21,7 @@
   documentation.dev.enable = false;
   documentation.doc.enable = false;
 
+  programs.command-not-found.enable = true;
   programs.vim.defaultEditor = true;
 
   services.openssh = {
@@ -43,7 +44,11 @@
   ];
 
   environment.systemPackages = with pkgs; [
+    bind
+    file
     htop
     lm_sensors
+    lsof
+    nodejs-17_x
   ];
 }
