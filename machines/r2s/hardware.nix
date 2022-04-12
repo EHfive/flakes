@@ -3,14 +3,13 @@
   # hardware.deviceTree.filter = "*rk3328-nanopi-r2s.dtb";
   # hardware.deviceTree.overlays = [{
   #   name = "sysled";
-  #   dtsFile = ./sysled.dts;
+  #   dtsFile = ./files/sysled.dts;
   # }];
 
   # nanopi r2s's DTS has not been actively updated, so just use the prebuilt one to avoid rebuild
   hardware.deviceTree.package = pkgs.lib.mkForce (
     pkgs.runCommand "dtbs-nanopi-r2s" { } ''
-      mkdir -p $out/rockchip
-      cp ${./rk3328-nanopi-r2s.dtb} -v --no-preserve=mode $out/rockchip/rk3328-nanopi-r2s.dtb
+      install -TDm644 ${./files/rk3328-nanopi-r2s.dtb} $out/rockchip/rk3328-nanopi-r2s.dtb
     ''
   );
 

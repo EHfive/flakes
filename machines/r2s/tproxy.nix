@@ -14,7 +14,7 @@ let
   '';
   buildChnroutesSetScript = pkgs.writeShellScript "build-chnroutes-set" ''
     export PATH="$PATH''${PATH:+:}${pkgs.curl}/bin:${pkgs.gnused}/bin"
-    ${builtins.readFile ./build-chnroutes-set.sh}
+    ${builtins.readFile ./files/build-chnroutes-set.sh}
   '';
 in
 {
