@@ -26,14 +26,6 @@ jobs:
             extra-platforms = aarch64-linux
             sandbox = false # can't install in act without this
 
-      - name: Restore Nix store cache
-        if: ${{ !env.ACT }}
-        uses: actions/cache@v3
-        with:
-          path: /nix/store
-          key: ${{ runner.os }}-nix-${{ hashFiles('**/*.nix', '**/flake.lock') }}
-          restore-keys: ${{ runner.os }}-nix-
-
       - name: Set up cachix
         uses: cachix/cachix-action@v10
         with:
