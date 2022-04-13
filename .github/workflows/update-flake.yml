@@ -13,13 +13,21 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
+
+      - name: Set up QEMU
+        if: ${{ !env.ACT }}
+        uses: docker/setup-qemu-action@v1
+
       - name: Install Nix
         uses: cachix/install-nix-action@v17
         with:
           nix_path: nixpkgs=channel:nixos-unstable-small
           extra_nix_config: |
+            extra-platforms = aarch64-linux
             sandbox = false # can't install in act without this
-      - uses: cachix/cachix-action@v10
+
+      - name: Set up cachix
+        uses: cachix/cachix-action@v10
         with:
           name: eh5
           authToken: ${{ secrets.CACHIX_AUTH_TOKEN }}
@@ -31,12 +39,16 @@ jobs:
         working-directory: ./packages
         run: nix run ..#nvfetcher
 
-      - name: Build develop profile
-        run: nix develop --profile dev -c true
+      - name: Build develop profile (x86_64-linux)
+        run: nix develop --profile dev -c true .#devShells.x86_64-linux.default
+
+      - name: Build develop profile (aarch64-linux)
+        if: ${{ !env.ACT }}
+        run: nix develop --profile dev-aarch64 -c true .#devShells.aarch64-linux.default
 
       - name: Push store cache to cachix
         if: ${{ !env.ACT }}
-        run: cachix push eh5 dev
+        run: cachix push eh5 dev dev-aarch64
 
       - name: Run flake check
         run: nix flake check
