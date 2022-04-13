@@ -20,7 +20,9 @@ rec {
       (builtins.attrNames attrSet)
   ;
 
-  filterNonNull = filterAttrSet (f: f != null);
+  attrsFilterNonNull = filterAttrSet (f: f != null);
+
+  ifTrueWithOr = f: res: default: if f res then res else default;
 
   checkPlatform = system: pkg:
     !(pkg ? meta && pkg.meta ? platforms)

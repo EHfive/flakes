@@ -38,7 +38,7 @@
             config.allowUnfree = true;
             overlays = [ self.overlays.default ];
           };
-          appPkgs = utils.filterNonNull {
+          appPkgs = utils.attrsFilterNonNull {
             agenix = agenix.defaultPackage.${system};
             deploy = deploy-rs.defaultPackage.${system};
             nvfetcher = nvfetcher.defaultPackage.${system} or null;

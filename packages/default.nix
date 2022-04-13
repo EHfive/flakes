@@ -2,22 +2,13 @@ let
   utils = import ../utils;
   allPackages = pkgs:
     let
-      inherit (pkgs) system;
       callPackage = fn: args:
-        let
-          pkg = pkgs.callPackage fn args;
-        in
-        if utils.checkPlatform system pkg
-        then pkg
-        else null
-      ;
+        utils.ifTrueWithOr
+          (utils.checkPlatform pkgs.system)
+          (pkgs.callPackage fn args)
+          null;
     in
-    {
-      fake-hwclock = callPackage ./fake-hwclock {};
-      mosdns = callPackage ./mosdns { };
-      ubootNanopiR2s = callPackage ./uboot-nanopi-r2s { };
-      v2ray-next = callPackage ./v2ray-next { };
-    };
+    (import ./packages.nix) { inherit callPackage; };
 in
 rec {
   packages = pkgs: builtins.foldl'
