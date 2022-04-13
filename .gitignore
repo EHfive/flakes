@@ -7,6 +7,7 @@ result
 # Local files
 *.local
 *.todo
+.secrets
 
 # develop profile
 dev
