@@ -57,6 +57,8 @@
     "vm.swappiness" = 20;
   };
 
+  powerManagement.cpuFreqGovernor = "powersave";
+
   services.fake-hwclock.enable = true;
 
   systemd.services."setup-net-leds" = {

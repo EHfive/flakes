@@ -51,10 +51,13 @@
     bind
     file
     htop
+    iperf2
     lm_sensors
     lsof
     nix-du
     nodejs-17_x
     usbutils
-  ];
+  ] ++ (with config.boot.kernelPackages; [
+    cpupower
+  ]);
 }
