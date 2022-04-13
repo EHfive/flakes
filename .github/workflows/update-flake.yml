@@ -40,11 +40,11 @@ jobs:
         run: nix run ..#nvfetcher
 
       - name: Build develop profile (x86_64-linux)
-        run: nix develop --profile dev -c true .#devShells.x86_64-linux.default
+        run: nix develop .#devShells.x86_64-linux.default --profile dev -c true
 
       - name: Build develop profile (aarch64-linux)
         if: ${{ !env.ACT }}
-        run: nix develop --profile dev-aarch64 -c true .#devShells.aarch64-linux.default
+        run: nix develop .#devShells.aarch64-linux.default --profile dev-aarch64 -c true
 
       - name: Push store cache to cachix
         if: ${{ !env.ACT }}

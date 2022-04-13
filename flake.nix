@@ -47,7 +47,7 @@
         rec {
           packages = myPkgs.packages pkgs;
           checks = packages;
-          apps = builtins.mapAttrs (name: value: mkApp { inherit name; drv = value; }) appPkgs;
+          apps = builtins.mapAttrs (name: drv: mkApp { inherit name drv; }) appPkgs;
           devShells.default = pkgs.mkShell {
             buildInputs = (builtins.attrValues packages) ++ (builtins.attrValues appPkgs);
           };
