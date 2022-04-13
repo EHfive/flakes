@@ -29,7 +29,6 @@ in
       ExecStop = stopScript;
       RemainAfterExit = true;
     };
-    restartTriggers = [ config.age.secrets.tproxyRule.path ];
   };
 
   systemd.services.update-chnroutes = {

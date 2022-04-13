@@ -29,9 +29,6 @@
     enable = true;
     configFile = config.age.secrets.v2rayConfig.path;
   };
-  systemd.services.v2ray-next.restartTriggers = [
-    config.age.secrets.v2rayConfig.path
-  ];
 
   # slient redis
   boot.kernel.sysctl."vm.overcommit_memory" = 1;
@@ -49,6 +46,5 @@
   systemd.services.mosdns = {
     wantedBy = [ "redis-mosdns.service" ];
     after = [ "redis-mosdns.service" ];
-    restartTriggers = [ config.age.secrets.mosdnsConfig.path ];
   };
 }

@@ -6,7 +6,11 @@
 
   nix = {
     settings = {
-      substituters = lib.mkBefore [ "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store" ];
+      substituters = lib.mkForce [
+        "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store"
+        "https://cache.nixos.org"
+        "https://eh5.cachix.org"
+      ];
       experimental-features = [ "nix-command" "flakes" ];
       auto-optimise-store = true;
     };
@@ -30,7 +34,7 @@
   };
 
   system.autoUpgrade = {
-    enable = false;
+    enable = true;
     flake = "github:EHfive/flakes";
     allowReboot = true;
     rebootWindow.lower = "01:00";

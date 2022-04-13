@@ -6,6 +6,8 @@ on:
       - main
   schedule:
     - cron: "0 */8 * * *"
+env:
+  ACT: ${{ env.ACT }}
 
 jobs:
   update:
