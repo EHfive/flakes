@@ -35,7 +35,7 @@ jobs:
         run: nix develop --profile dev -c true
 
       - name: Push store cache to cachix
-        if: ${{ secrets.CACHIX_AUTH_TOKEN }}
+        if: ${{ !env.ACT }}
         run: cachix push eh5 dev
 
       - name: Run flake check
