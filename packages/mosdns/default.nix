@@ -1,4 +1,5 @@
 { lib
+, callPackage
 , runCommand
 , buildGoModule
 , fetchFromGitHub
@@ -15,16 +16,10 @@ let
       "${v2ray-domain-list-community}/share/v2ray"
     ];
   };
-  version = "3.7.2";
-  mosdns = buildGoModule rec {
+  source = (callPackage ../_sources/generated.nix { }).mosdns;
+  mosdns = buildGoModule {
     pname = "mosdns";
-    inherit version;
-    src = fetchFromGitHub {
-      owner = "IrineSistiana";
-      repo = "mosdns";
-      rev = "v${version}";
-      sha256 = "0p45mavjarfvsxjm3mdlv9s9inhpwp0czjhks6iypjvl47cs6ykd";
-    };
+    inherit (source) version src;
     vendorSha256 = "2AF3ONhD6xH6m6QFmxRBUNsk6Nd8yrXVyCFjhDJDFx4=";
     doCheck = false;
 
@@ -46,10 +41,9 @@ let
     };
   };
 in
-runCommand "mosdns-${version}"
+runCommand mosdns.name
 {
-  inherit version;
-  inherit (mosdns) meta;
+  inherit (mosdns) version meta;
   nativeBuildInputs = [ makeBinaryWrapper ];
 } ''
   makeWrapper ${mosdns}/bin/mosdns "$out/bin/mosdns" --chdir ${assetsDrv}

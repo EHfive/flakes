@@ -16,8 +16,13 @@
       inputs.utils.follows = "flake-utils";
       inputs.flake-compat.follows = "flake-compat";
     };
+    nvfetcher = {
+      url = "github:berberman/nvfetcher";
+      inputs.flake-utils.follows = "flake-utils";
+      inputs.flake-compat.follows = "flake-compat";
+    };
   };
-  outputs = { self, nixpkgs, flake-utils, agenix, deploy-rs, ... }:
+  outputs = { self, nixpkgs, flake-utils, agenix, deploy-rs, nvfetcher, ... }:
     let
       inherit (flake-utils.lib) eachDefaultSystem mkApp;
       systems = flake-utils.lib.system;
@@ -33,12 +38,18 @@
             config.allowUnfree = true;
             overlays = [ self.overlays.default ];
           };
+          appPkgs = utils.filterNonNull {
+            agenix = agenix.defaultPackage.${system};
+            deploy = deploy-rs.defaultPackage.${system};
+            nvfetcher = nvfetcher.defaultPackage.${system} or null;
+          };
         in
-        {
+        rec {
           packages = myPkgs.packages pkgs;
-          apps = {
-            agenix = mkApp { drv = agenix.defaultPackage.${system}; };
-            deploy = deploy-rs.apps.${system}.deploy-rs;
+          checks = packages;
+          apps = builtins.mapAttrs (name: value: mkApp { drv = value; }) appPkgs;
+          devShells.default = pkgs.mkShell {
+            buildInputs = (builtins.attrValues packages) ++ (builtins.attrValues appPkgs);
           };
         }
       )

@@ -7,3 +7,7 @@ result
 # Local files
 *.local
 *.todo
+
+# develop profile
+dev
+dev-*-link

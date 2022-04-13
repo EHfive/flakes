@@ -1,4 +1,5 @@
 { lib
+, callPackage
 , fetchFromGitHub
 , symlinkJoin
 , buildGoModule
@@ -8,27 +9,16 @@
 , v2ray-domain-list-community
 , assets ? [ v2ray-geoip v2ray-domain-list-community ]
 }:
-
 let
-  version = "5.0.3";
-
-  src = fetchFromGitHub {
-    owner = "v2fly";
-    repo = "v2ray-core";
-    rev = "v${version}";
-    sha256 = "12cfzpka1hm6zjy9j5z454y55v28gphbs97xiabinismzwcriz3b";
-  };
-
-  vendorSha256 = "TaDAXgAicXm6x1qeXQR7/t9bRjy++fI3/uKlXrejVz8=";
-
   assetsDrv = symlinkJoin {
     name = "v2ray-assets";
     paths = assets;
   };
 
+  source = (callPackage ../_sources/generated.nix { }).v2ray;
   core = buildGoModule rec {
-    pname = "v2ray";
-    inherit version src vendorSha256;
+    inherit (source) pname version src;
+    vendorSha256 = "TaDAXgAicXm6x1qeXQR7/t9bRjy++fI3/uKlXrejVz8=";
 
     doCheck = false;
 
@@ -49,13 +39,10 @@ let
       license = lib.licenses.mit;
     };
   };
-
 in
-runCommand "v2ray-${version}"
+runCommand core.name
 {
-  inherit version;
-  inherit (core) meta;
-
+  inherit (core) version meta;
   nativeBuildInputs = [ makeWrapper ];
 } ''
   for file in ${core}/bin/*; do

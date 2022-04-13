@@ -1,0 +1,42 @@
+{
+    "mosdns": {
+        "pinned": false,
+        "cargoLock": null,
+        "name": "mosdns",
+        "version": "v3.7.2",
+        "passthru": null,
+        "src": {
+            "deepClone": false,
+            "leaveDotGit": false,
+            "owner": "IrineSistiana",
+            "fetchSubmodules": false,
+            "name": null,
+            "repo": "mosdns",
+            "type": "github",
+            "sha256": "sha256-bXqj2SF0y+uj0RPKz8DlF9qYdNq01VFl19tlJbeqhVw=",
+            "rev": "v3.7.2"
+        },
+        "extract": null,
+        "rustGitDeps": null
+    },
+    "v2ray": {
+        "pinned": false,
+        "cargoLock": null,
+        "name": "v2ray",
+        "version": "v5.0.3",
+        "passthru": null,
+        "src": {
+            "deepClone": false,
+            "leaveDotGit": false,
+            "owner": "v2fly",
+            "fetchSubmodules": false,
+            "name": null,
+            "repo": "v2ray-core",
+            "type": "github",
+            "sha256": "sha256-a/yYGf9VRxuXiv0kveB9SOxSPCnkF5m8/KbCoOb9jok=",
+            "rev": "v5.0.3"
+        },
+        "extract": null,
+        "rustGitDeps": null
+    }
+}
