@@ -56,7 +56,7 @@
     // {
       lib.utils = utils;
 
-      overlays.default = myPkgs.overlay;
+      overlays = myPkgs.overlays;
 
       nixosModules = import ./modules;
 

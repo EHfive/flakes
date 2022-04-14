@@ -2,14 +2,24 @@
 
 ## packages
 
-| Name           | Description                  | Platforms     |
-| -------------- | ---------------------------- | ------------- |
-| fake-hwclock   | Fake hardware clock          | \*            |
-| mosdns         | A DNS proxy                  | \*            |
-| ubootNanopiR2s | U-Boot images for NanoPi R2S | aarch64-linux |
-| v2ray-next     | V2Ray v5                     | \*            |
+| Name                    | Description                                                            | Platforms     |
+| ----------------------- | ---------------------------------------------------------------------- | ------------- |
+| fake-hwclock            | Fake hardware clock                                                    | \*            |
+| mosdns                  | A DNS proxy                                                            | \*            |
+| ubootNanopiR2s          | U-Boot images for NanoPi R2S                                           | aarch64-linux |
+| v2ray-next              | V2Ray v5                                                               | \*            |
+| v2ray-rules-dat-geoip   | See [v2ray-rules-dat](https://github.com/Loyalsoldier/v2ray-rules-dat) | \*            |
+| v2ray-rules-dat-geosite | ditto                                                                  | \*            |
 
-`nixpkgs` overlay `.#overlays.default`
+## overlays
+
+### `.#overlays.default`
+
+Adds all packages listed above.
+
+### `.#overlays.v2ray-rules-dat`
+
+Overrides `v2ray-geoip` and `v2ray-rules-dat-geosite` with `v2ray-rules-dat-geoip` and `v2ray-rules-dat-geosite` respectively.
 
 ## nixosModules
 

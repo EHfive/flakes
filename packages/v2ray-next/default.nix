@@ -1,5 +1,4 @@
 { lib
-, callPackage
 , fetchFromGitHub
 , symlinkJoin
 , buildGoModule
@@ -8,6 +7,7 @@
 , v2ray-geoip
 , v2ray-domain-list-community
 , assets ? [ v2ray-geoip v2ray-domain-list-community ]
+, sources
 }:
 let
   assetsDrv = symlinkJoin {
@@ -15,9 +15,8 @@ let
     paths = assets;
   };
 
-  source = (callPackage ../_sources/generated.nix { }).v2ray;
   core = buildGoModule rec {
-    inherit (source) pname version src;
+    inherit (sources.v2ray) pname version src;
     vendorSha256 = "TaDAXgAicXm6x1qeXQR7/t9bRjy++fI3/uKlXrejVz8=";
 
     doCheck = false;

@@ -22,6 +22,7 @@ lib.nixosSystem rec {
       };
       nixpkgs.overlays = [
         self.overlays.default
+        self.overlays.v2ray-rules-dat
       ];
     }
   ];

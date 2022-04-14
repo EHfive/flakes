@@ -1,5 +1,4 @@
 { lib
-, callPackage
 , runCommand
 , buildGoModule
 , fetchFromGitHub
@@ -7,6 +6,7 @@
 , symlinkJoin
 , v2ray-geoip
 , v2ray-domain-list-community
+, sources
 }:
 let
   assetsDrv = symlinkJoin {
@@ -16,10 +16,9 @@ let
       "${v2ray-domain-list-community}/share/v2ray"
     ];
   };
-  source = (callPackage ../_sources/generated.nix { }).mosdns;
   mosdns = buildGoModule {
     pname = "mosdns";
-    inherit (source) version src;
+    inherit (sources.mosdns) version src;
     vendorSha256 = "2AF3ONhD6xH6m6QFmxRBUNsk6Nd8yrXVyCFjhDJDFx4=";
     doCheck = false;
 
