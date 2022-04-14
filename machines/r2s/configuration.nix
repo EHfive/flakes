@@ -35,10 +35,10 @@
 
   system.autoUpgrade = {
     enable = true;
+    dates = "04:00";
+    randomizedDelaySec = "60min";
     flake = "github:EHfive/flakes";
     allowReboot = true;
-    rebootWindow.lower = "01:00";
-    rebootWindow.upper = "05:00";
   };
   nix.gc.automatic = true;
   nix.optimise.automatic = true;
