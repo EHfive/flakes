@@ -46,10 +46,6 @@ jobs:
         if: ${{ !env.ACT }}
         run: nix develop .#devShells.aarch64-linux.default --profile dev-aarch64 -c true
 
-      - name: Push store cache to cachix
-        if: ${{ !env.ACT }}
-        run: cachix push eh5 dev dev-aarch64
-
       - name: Run flake check
         run: nix flake check
 
