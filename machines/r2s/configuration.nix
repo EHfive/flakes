@@ -1,8 +1,9 @@
 { config, pkgs, lib, ... }:
 {
-  age.secrets.mosdnsConfig.file = ./secrets/mosdns.yaml.age;
-  age.secrets.tproxyRule.file = ./secrets/tproxy.nft.age;
-  age.secrets.v2rayConfig.file = ./secrets/v2ray.jsonc.age;
+  sops.defaultSopsFormat = "binary";
+  sops.secrets.mosdnsConfig.sopsFile = ./secrets/mosdns.yaml.sops;
+  sops.secrets.tproxyRule.sopsFile = ./secrets/tproxy.nft.sops;
+  sops.secrets.v2rayConfig.sopsFile = ./secrets/v2ray.jsonc.sops;
 
   nix = {
     settings = {

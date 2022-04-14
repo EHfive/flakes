@@ -1,4 +1,4 @@
-{ self, system ? "aarch64-linux", nixpkgs, agenix }:
+{ self, system ? "aarch64-linux", nixpkgs, sops-nix }:
 let
   inherit (nixpkgs) lib;
 in
@@ -13,7 +13,7 @@ lib.nixosSystem rec {
     self.nixosModules.fake-hwclock
     self.nixosModules.mosdns
     self.nixosModules.v2ray-next
-    agenix.nixosModule
+    sops-nix.nixosModules.sops
     {
       _module.args = { inherit nixpkgs; };
       nix = {

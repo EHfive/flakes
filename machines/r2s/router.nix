@@ -27,8 +27,9 @@
 
   services.v2ray-next = {
     enable = true;
-    configFile = config.age.secrets.v2rayConfig.path;
+    configFile = config.sops.secrets.v2rayConfig.path;
   };
+  sops.secrets.v2rayConfig.restartUnits = [ "v2ray-next.service" ];
 
   # slient redis
   boot.kernel.sysctl."vm.overcommit_memory" = 1;
@@ -40,8 +41,9 @@
 
   services.mosdns = {
     enable = true;
-    configFile = config.age.secrets.mosdnsConfig.path;
+    configFile = config.sops.secrets.mosdnsConfig.path;
   };
+  sops.secrets.mosdnsConfig.restartUnits = [ "mosdns.service" ];
 
   systemd.services.mosdns = {
     wantedBy = [ "redis-mosdns.service" ];

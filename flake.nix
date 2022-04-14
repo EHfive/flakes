@@ -2,8 +2,8 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable-small";
     flake-utils.url = "github:numtide/flake-utils";
-    agenix = {
-      url = "github:ryantm/agenix";
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     flake-compat = {
@@ -22,7 +22,7 @@
       inputs.flake-compat.follows = "flake-compat";
     };
   };
-  outputs = { self, nixpkgs, flake-utils, agenix, deploy-rs, nvfetcher, ... }:
+  outputs = { self, nixpkgs, flake-utils, sops-nix, deploy-rs, nvfetcher, ... }:
     let
       inherit (flake-utils.lib) eachDefaultSystem mkApp;
       systems = flake-utils.lib.system;
@@ -39,7 +39,6 @@
             overlays = [ self.overlays.default ];
           };
           appPkgs = utils.attrsFilterNonNull {
-            agenix = agenix.defaultPackage.${system};
             deploy = deploy-rs.defaultPackage.${system};
             nvfetcher = nvfetcher.defaultPackage.${system} or null;
           };
@@ -49,7 +48,12 @@
           checks = packages;
           apps = builtins.mapAttrs (name: drv: mkApp { inherit name drv; }) appPkgs;
           devShells.default = pkgs.mkShell {
-            buildInputs = (builtins.attrValues packages) ++ (builtins.attrValues appPkgs);
+            buildInputs = builtins.filter (f: f != null)
+              ((builtins.attrValues packages)
+              ++ (builtins.attrValues appPkgs)
+              ++ [
+                sops-nix.packages.${system}.sops-install-secrets or null
+              ]);
           };
         }
       )
@@ -63,7 +67,7 @@
       nixosConfigurations = {
         nixos-r2s = import ./machines/r2s {
           system = systems.aarch64-linux;
-          inherit self nixpkgs agenix;
+          inherit self nixpkgs sops-nix;
         };
       };
 
