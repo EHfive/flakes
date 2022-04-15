@@ -1,11 +1,10 @@
 {
     "geoip-dat": {
-        "cargoLock": null,
+        "cargoLocks": null,
         "extract": null,
         "name": "geoip-dat",
         "passthru": null,
         "pinned": false,
-        "rustGitDeps": null,
         "src": {
             "name": null,
             "sha256": "sha256-X0qnQfMwxcmeylfOK0e0vhv9zC7FYdQhM2X+A3cQHOs=",
@@ -15,12 +14,11 @@
         "version": "202204142213"
     },
     "geosite-dat": {
-        "cargoLock": null,
+        "cargoLocks": null,
         "extract": null,
         "name": "geosite-dat",
         "passthru": null,
         "pinned": false,
-        "rustGitDeps": null,
         "src": {
             "name": null,
             "sha256": "sha256-piIL4lZC/NZnT/AoOIbHXm/N5gwtsFdT8FmZCfGO6ZY=",
@@ -30,12 +28,11 @@
         "version": "202204142213"
     },
     "mosdns": {
-        "cargoLock": null,
+        "cargoLocks": null,
         "extract": null,
         "name": "mosdns",
         "passthru": null,
         "pinned": false,
-        "rustGitDeps": null,
         "src": {
             "deepClone": false,
             "fetchSubmodules": false,
@@ -50,12 +47,11 @@
         "version": "v3.7.2"
     },
     "v2ray": {
-        "cargoLock": null,
+        "cargoLocks": null,
         "extract": null,
         "name": "v2ray",
         "passthru": null,
         "pinned": false,
-        "rustGitDeps": null,
         "src": {
             "deepClone": false,
             "fetchSubmodules": false,
