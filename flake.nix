@@ -2,6 +2,10 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable-small";
     flake-utils.url = "github:numtide/flake-utils";
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     sops-nix = {
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -18,11 +22,26 @@
     };
     nvfetcher = {
       url = "github:berberman/nvfetcher";
+      inputs.nixpkgs.follows = "nixpkgs";
       inputs.flake-utils.follows = "flake-utils";
       inputs.flake-compat.follows = "flake-compat";
     };
+    nixos-cn = {
+      url = "github:nixos-cn/flakes";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-utils.follows = "flake-utils";
+    };
   };
-  outputs = { self, nixpkgs, flake-utils, sops-nix, deploy-rs, nvfetcher, ... }:
+  outputs =
+    { self
+    , nixpkgs
+    , flake-utils
+    , home-manager
+    , sops-nix
+    , deploy-rs
+    , nvfetcher
+    , ...
+    } @ inputs:
     let
       inherit (flake-utils.lib) eachDefaultSystem mkApp;
       systems = flake-utils.lib.system;
@@ -39,6 +58,7 @@
             overlays = [ self.overlays.default ];
           };
           appPkgs = utils.attrsFilterNonNull {
+            home-manager = home-manager.defaultPackage.${system};
             deploy = deploy-rs.defaultPackage.${system};
             nvfetcher = nvfetcher.defaultPackage.${system} or null;
           };
@@ -63,6 +83,12 @@
       overlays = myPkgs.overlays;
 
       nixosModules = import ./modules;
+
+      homeConfigurations.eh5 = import ./homes/eh5 {
+        system = systems.x86_64-linux;
+        username = "eh5";
+        inherit self nixpkgs home-manager inputs;
+      };
 
       nixosConfigurations = {
         nixos-r2s = import ./machines/r2s {

@@ -57,6 +57,49 @@
         "type": "github"
       }
     },
+    "home-manager": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1649984295,
+        "narHash": "sha256-55dgKGs7W8eC3s9GYewll9y4IlP/KAlSinjQwshNpxM=",
+        "owner": "nix-community",
+        "repo": "home-manager",
+        "rev": "d49d68f4196d32c5039cb9e91d730cee894f6f14",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "home-manager",
+        "type": "github"
+      }
+    },
+    "nixos-cn": {
+      "inputs": {
+        "flake-utils": [
+          "flake-utils"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1649989890,
+        "narHash": "sha256-+SEJFXZdZ/B4ht3eoUcXgWvUDYWfaDRsMu5Rq4nEFv4=",
+        "owner": "nixos-cn",
+        "repo": "flakes",
+        "rev": "de81aefef7a1b3057590d399882344e47db6b011",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos-cn",
+        "repo": "flakes",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1649976856,
@@ -73,22 +116,6 @@
         "type": "github"
       }
     },
-    "nixpkgs_2": {
-      "locked": {
-        "lastModified": 1649673231,
-        "narHash": "sha256-1T3AFscfS7s9pkFA+UIDrHH3/RLVjRdYs5ImuLYpOlE=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "33772708c6d0e33f697426ba386aa0149cbcbecb",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "ref": "nixos-unstable",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
     "nvfetcher": {
       "inputs": {
         "flake-compat": [
@@ -97,14 +124,16 @@
         "flake-utils": [
           "flake-utils"
         ],
-        "nixpkgs": "nixpkgs_2"
+        "nixpkgs": [
+          "nixpkgs"
+        ]
       },
       "locked": {
-        "lastModified": 1649967870,
-        "narHash": "sha256-6weabJ9bZP45QlF2ZtOOXxwvVPNTzkLM3RAfHhC8FKE=",
+        "lastModified": 1649990072,
+        "narHash": "sha256-ZnAwee1ht/iYZQ5884MEJ7/rCoBn/CwIwvo9gjZm/VQ=",
         "owner": "berberman",
         "repo": "nvfetcher",
-        "rev": "6b67e7d13ce65e5aad9314624da85990bc9a33ff",
+        "rev": "d34ae1571d6625e7815336b9384a73b07366e050",
         "type": "github"
       },
       "original": {
@@ -118,6 +147,8 @@
         "deploy-rs": "deploy-rs",
         "flake-compat": "flake-compat",
         "flake-utils": "flake-utils",
+        "home-manager": "home-manager",
+        "nixos-cn": "nixos-cn",
         "nixpkgs": "nixpkgs",
         "nvfetcher": "nvfetcher",
         "sops-nix": "sops-nix"
