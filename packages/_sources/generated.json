@@ -1,72 +1,72 @@
 {
-    "geosite-dat": {
-        "pinned": false,
+    "geoip-dat": {
         "cargoLock": null,
-        "name": "geosite-dat",
-        "version": "202204132211",
-        "passthru": null,
-        "src": {
-            "url": "https://github.com/Loyalsoldier/v2ray-rules-dat/releases/download/202204132211/geosite.dat",
-            "name": null,
-            "type": "url",
-            "sha256": "sha256-1NBf3pQQ1Ub6EBFB1gLi+KUkIePkd+O1AEvu3OJtexs="
-        },
         "extract": null,
-        "rustGitDeps": null
+        "name": "geoip-dat",
+        "passthru": null,
+        "pinned": false,
+        "rustGitDeps": null,
+        "src": {
+            "name": null,
+            "sha256": "sha256-X0qnQfMwxcmeylfOK0e0vhv9zC7FYdQhM2X+A3cQHOs=",
+            "type": "url",
+            "url": "https://github.com/Loyalsoldier/v2ray-rules-dat/releases/download/202204142213/geoip.dat"
+        },
+        "version": "202204142213"
+    },
+    "geosite-dat": {
+        "cargoLock": null,
+        "extract": null,
+        "name": "geosite-dat",
+        "passthru": null,
+        "pinned": false,
+        "rustGitDeps": null,
+        "src": {
+            "name": null,
+            "sha256": "sha256-piIL4lZC/NZnT/AoOIbHXm/N5gwtsFdT8FmZCfGO6ZY=",
+            "type": "url",
+            "url": "https://github.com/Loyalsoldier/v2ray-rules-dat/releases/download/202204142213/geosite.dat"
+        },
+        "version": "202204142213"
     },
     "mosdns": {
-        "pinned": false,
         "cargoLock": null,
+        "extract": null,
         "name": "mosdns",
-        "version": "v3.7.2",
         "passthru": null,
+        "pinned": false,
+        "rustGitDeps": null,
         "src": {
             "deepClone": false,
-            "leaveDotGit": false,
-            "owner": "IrineSistiana",
             "fetchSubmodules": false,
+            "leaveDotGit": false,
             "name": null,
+            "owner": "IrineSistiana",
             "repo": "mosdns",
-            "type": "github",
+            "rev": "v3.7.2",
             "sha256": "sha256-bXqj2SF0y+uj0RPKz8DlF9qYdNq01VFl19tlJbeqhVw=",
-            "rev": "v3.7.2"
+            "type": "github"
         },
-        "extract": null,
-        "rustGitDeps": null
-    },
-    "geoip-dat": {
-        "pinned": false,
-        "cargoLock": null,
-        "name": "geoip-dat",
-        "version": "202204132211",
-        "passthru": null,
-        "src": {
-            "url": "https://github.com/Loyalsoldier/v2ray-rules-dat/releases/download/202204132211/geoip.dat",
-            "name": null,
-            "type": "url",
-            "sha256": "sha256-Qt04q5xFmj5z759XTMMnAougs9VkAoFFqOXdR9NABt0="
-        },
-        "extract": null,
-        "rustGitDeps": null
+        "version": "v3.7.2"
     },
     "v2ray": {
-        "pinned": false,
         "cargoLock": null,
+        "extract": null,
         "name": "v2ray",
-        "version": "v5.0.3",
         "passthru": null,
+        "pinned": false,
+        "rustGitDeps": null,
         "src": {
             "deepClone": false,
-            "leaveDotGit": false,
-            "owner": "v2fly",
             "fetchSubmodules": false,
+            "leaveDotGit": false,
             "name": null,
+            "owner": "v2fly",
             "repo": "v2ray-core",
-            "type": "github",
+            "rev": "v5.0.3",
             "sha256": "sha256-a/yYGf9VRxuXiv0kveB9SOxSPCnkF5m8/KbCoOb9jok=",
-            "rev": "v5.0.3"
+            "type": "github"
         },
-        "extract": null,
-        "rustGitDeps": null
+        "version": "v5.0.3"
     }
 }
