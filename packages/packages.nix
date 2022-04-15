@@ -1,6 +1,7 @@
 { callPackage }: {
   fake-hwclock = callPackage ./fake-hwclock { };
   mosdns = callPackage ./mosdns { };
+  qcef = callPackage ./qcef { };
   ubootNanopiR2s = callPackage ./uboot-nanopi-r2s { };
   v2ray-next = callPackage ./v2ray-next { };
   v2ray-rules-dat-geoip = callPackage ./v2ray-geoip { };

@@ -1,4 +1,6 @@
 # Build result
+source/
+outputs/
 result
 
 # IDE state files
