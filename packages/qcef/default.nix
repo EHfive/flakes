@@ -93,6 +93,9 @@ stdenv.mkDerivation {
   dontWrapQtApps = true;
 
   meta = {
-    platforms = [ "i686-linux" "x86_64-linux" "aarch64-linux" ];
+    description = "Qt5 binding of CEF";
+    homepage = "https://github.com/martyr-deepin/qcef";
+    platforms = [ "x86_64-linux" ];
+    license = lib.licenses.unfree;
   };
 }
