@@ -6,7 +6,7 @@
 | ----------------------- | ---------------------------------------------------------------------- | --------------------------- |
 | fake-hwclock            | Fake hardware clock                                                    | \*                          |
 | mosdns                  | A DNS proxy                                                            | \*                          |
-| netease-cloud-music     | (no bundled libs, fixes LDAC playback)                                   | x86_64-linux                |
+| netease-cloud-music     | (no bundled libs, fixes FLAC playback)                                   | x86_64-linux                |
 | qcef                    | Qt5 binding of CEF                                                     | {i686,x86_64,aarch64}-linux |
 | ubootNanopiR2s          | U-Boot images for NanoPi R2S                                           | aarch64-linux               |
 | v2ray-next              | V2Ray v5                                                               | \*                          |
