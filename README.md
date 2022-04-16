@@ -24,6 +24,40 @@ $ nix build github:EHfive/flakes#ubootNanopiR2s
 $ nix run   github:EHfive/flakes#netease-cloud-music
 ```
 
+### NixOS (flake)
+
+```nix
+{
+  inputs.eh5 = {
+    url = "github:EHfive/flakes";
+    inputs.nixpkgs.follows = "nixpkgs";
+  };
+
+  outputs = { self, nixpkgs, eh5 }: {
+    nixosConfigurations.your-machine = nixpkgs.lib.nixosSystem rec {
+      # system = ...
+      modules = [
+        # ...
+        # eh5.nixosModules.mosdns,
+        # eh5.nixosModules.v2ray-next,
+        { pkgs, ... }: {
+          nixpkgs.overlays = [
+            # ...
+            eh5.overlays.default
+            # eh5.overlays.v2ray-rules-dat
+          ];
+
+          environment.systemPackages = [
+            pkgs.netease-cloud-music # via overlay
+            # eh5.package.${system}.netease-cloud-music # or specify the package directly
+          ]
+        }
+      ];
+    };
+  };
+}
+```
+
 ## packages
 
 | Name                    | Description                                                            | Platforms     |
