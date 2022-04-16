@@ -77,29 +77,6 @@
         "type": "github"
       }
     },
-    "nixos-cn": {
-      "inputs": {
-        "flake-utils": [
-          "flake-utils"
-        ],
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1649989890,
-        "narHash": "sha256-+SEJFXZdZ/B4ht3eoUcXgWvUDYWfaDRsMu5Rq4nEFv4=",
-        "owner": "nixos-cn",
-        "repo": "flakes",
-        "rev": "de81aefef7a1b3057590d399882344e47db6b011",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nixos-cn",
-        "repo": "flakes",
-        "type": "github"
-      }
-    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1650020041,
@@ -148,7 +125,6 @@
         "flake-compat": "flake-compat",
         "flake-utils": "flake-utils",
         "home-manager": "home-manager",
-        "nixos-cn": "nixos-cn",
         "nixpkgs": "nixpkgs",
         "nvfetcher": "nvfetcher",
         "sops-nix": "sops-nix"

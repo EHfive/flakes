@@ -17,7 +17,6 @@ home-manager.lib.homeManagerConfiguration {
     config.allowUnfree = true;
     overlays = [
       self.overlays.default
-      inputs.nixos-cn.overlay
     ];
   };
 }
