@@ -26,6 +26,8 @@ $ nix run   github:EHfive/flakes#netease-cloud-music
 
 ### NixOS (flake)
 
+<details>
+
 ```nix
 {
   inputs.eh5 = {
@@ -57,6 +59,8 @@ $ nix run   github:EHfive/flakes#netease-cloud-music
   };
 }
 ```
+
+</details>
 
 ## packages
 
