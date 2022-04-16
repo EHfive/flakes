@@ -96,6 +96,6 @@ stdenv.mkDerivation {
     description = "Qt5 binding of CEF";
     homepage = "https://github.com/martyr-deepin/qcef";
     platforms = [ "x86_64-linux" ];
-    license = lib.licenses.unfree;
+    license = lib.licenses.lgpl3;
   };
 }

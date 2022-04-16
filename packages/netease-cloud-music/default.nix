@@ -67,6 +67,6 @@ stdenv.mkDerivation {
     description = "Netease cloud music player.";
     homepage = "https://music.163.com";
     platforms = [ "x86_64-linux" ];
-    license = lib.licenses.unfree;
+    license = lib.licenses.unfreeRedistributable;
   };
 }
