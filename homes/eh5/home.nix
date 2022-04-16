@@ -28,6 +28,6 @@
     pkgs.cachix
     pkgs.rnix-lsp
     pkgs.ssh-to-age
-    pkgs.nixos-cn.netease-cloud-music
+    pkgs.netease-cloud-music
   ];
 }

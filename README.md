@@ -2,14 +2,16 @@
 
 ## packages
 
-| Name                    | Description                                                            | Platforms     |
-| ----------------------- | ---------------------------------------------------------------------- | ------------- |
-| fake-hwclock            | Fake hardware clock                                                    | \*            |
-| mosdns                  | A DNS proxy                                                            | \*            |
-| ubootNanopiR2s          | U-Boot images for NanoPi R2S                                           | aarch64-linux |
-| v2ray-next              | V2Ray v5                                                               | \*            |
-| v2ray-rules-dat-geoip   | See [v2ray-rules-dat](https://github.com/Loyalsoldier/v2ray-rules-dat) | \*            |
-| v2ray-rules-dat-geosite | ditto                                                                  | \*            |
+| Name                    | Description                                                            | Platforms                   |
+| ----------------------- | ---------------------------------------------------------------------- | --------------------------- |
+| fake-hwclock            | Fake hardware clock                                                    | \*                          |
+| mosdns                  | A DNS proxy                                                            | \*                          |
+| netease-cloud-music     | (no bundled libs, fixes LDAC playback)                                   | x86_64-linux                |
+| qcef                    | Qt5 binding of CEF                                                     | {i686,x86_64,aarch64}-linux |
+| ubootNanopiR2s          | U-Boot images for NanoPi R2S                                           | aarch64-linux               |
+| v2ray-next              | V2Ray v5                                                               | \*                          |
+| v2ray-rules-dat-geoip   | See [v2ray-rules-dat](https://github.com/Loyalsoldier/v2ray-rules-dat) | \*                          |
+| v2ray-rules-dat-geosite | ditto                                                                  | \*                          |
 
 ## overlays
 
