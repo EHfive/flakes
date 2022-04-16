@@ -50,7 +50,7 @@ $ nix run   github:EHfive/flakes#netease-cloud-music
           environment.systemPackages = [
             pkgs.netease-cloud-music # via overlay
             # eh5.package.${system}.netease-cloud-music # or specify the package directly
-          ]
+          ];
         }
       ];
     };
