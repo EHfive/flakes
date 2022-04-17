@@ -1,6 +1,6 @@
 let
   utils = import ../utils;
-  extraPackages = pkgs: {
+  specialPackages = pkgs: {
     sources = pkgs.callPackage ./_sources/generated.nix { };
   };
   allPackages = pkgs:
@@ -9,7 +9,7 @@ let
         utils.ifTrueWithOr
           (utils.checkPlatform pkgs.system)
           (pkgs.lib.callPackageWith
-            (pkgs // extraPackages pkgs)
+            (pkgs // specialPackages pkgs)
             fn
             args
           )
@@ -29,7 +29,7 @@ rec {
 
   nurPackages = pkgs: (import ./packages.nix {
     callPackage = pkgs.lib.callPackageWith
-      (pkgs // extraPackages pkgs // nurPackages pkgs);
+      (pkgs // specialPackages pkgs // nurPackages pkgs);
   });
 
   overlays.default = final: prev: allPackages final;
