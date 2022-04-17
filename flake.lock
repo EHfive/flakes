@@ -77,6 +77,21 @@
         "type": "github"
       }
     },
+    "nixgl": {
+      "locked": {
+        "lastModified": 1644013836,
+        "narHash": "sha256-8J6HqBr8+JlZzjyMV8FrCS6ZI6rHo1pTMPilSBf6TaE=",
+        "owner": "guibou",
+        "repo": "nixGL",
+        "rev": "17658df1e17a64bc23ee5c93cfa9e8b663a4ac81",
+        "type": "github"
+      },
+      "original": {
+        "owner": "guibou",
+        "repo": "nixGL",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1650118033,
@@ -125,6 +140,7 @@
         "flake-compat": "flake-compat",
         "flake-utils": "flake-utils",
         "home-manager": "home-manager",
+        "nixgl": "nixgl",
         "nixpkgs": "nixpkgs",
         "nvfetcher": "nvfetcher",
         "sops-nix": "sops-nix"

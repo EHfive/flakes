@@ -1,4 +1,15 @@
-{ config, lib, pkgs, ... }: {
+{ config, lib, pkgs, ... }:
+let
+  clang14-tools =
+    let
+      inherit (pkgs.llvmPackages_14) clang-unwrapped clang;
+    in
+    pkgs.clang-tools.overrideAttrs (_: {
+      version = lib.getVersion clang-unwrapped;
+      inherit clang;
+    });
+in
+{
   nix = {
     package = pkgs.nixVersions.stable;
     settings = {
@@ -24,10 +35,12 @@
 
   home.language.base = "zh_CN.UTF-8";
 
-  home.packages = [
-    pkgs.cachix
-    pkgs.rnix-lsp
-    pkgs.ssh-to-age
-    pkgs.netease-cloud-music
+  home.packages = with pkgs; [
+    cachix
+    clang14-tools
+    rnix-lsp
+    ssh-to-age
+    netease-cloud-music
+    nixgl.nixGLIntel
   ];
 }
