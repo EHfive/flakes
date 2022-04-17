@@ -20,15 +20,17 @@ or add to NixOS config
 ### Build/Run package
 
 ```
-$ nix build github:EHfive/flakes#ubootNanopiR2s
 $ nix run   github:EHfive/flakes#netease-cloud-music
+$ nix build github:EHfive/flakes#packages.aarch64-linux.ubootNanopiR2s
 ```
 
-### NixOS (flake)
+### Install package, module
 
 <details>
+<summary>NixOS (flake)</summary>
 
 ```nix
+# flake.nix
 {
   inputs.eh5 = {
     url = "github:EHfive/flakes";
@@ -40,24 +42,33 @@ $ nix run   github:EHfive/flakes#netease-cloud-music
       # system = ...
       modules = [
         # ...
-        # eh5.nixosModules.mosdns,
-        # eh5.nixosModules.v2ray-next,
+        #eh5.nixosModules.mosdns,
+        #eh5.nixosModules.v2ray-next,
         { pkgs, ... }: {
           nixpkgs.overlays = [
             # ...
             eh5.overlays.default
-            # eh5.overlays.v2ray-rules-dat
+            #eh5.overlays.v2ray-rules-dat
           ];
 
           environment.systemPackages = [
             pkgs.netease-cloud-music # via overlay
-            # eh5.package.${system}.netease-cloud-music # or specify the package directly
+            # or specify the package directly
+            #eh5.packages.${system}.netease-cloud-music
           ];
         }
       ];
     };
   };
 }
+```
+
+All packages in this repo are also re-exported into [github:nixos-cn/flakes](https://github.com/nixos-cn/flakes), you can install from it in same fashion as above.
+
+```
+$ nix run github:nixos-cn/flakes#re-export.netease-cloud-music
+$ # or in full path
+$ nix run github:nixos-cn/flakes#legacyPackages.x86_64-linux.re-export.netease-cloud-music
 ```
 
 </details>
