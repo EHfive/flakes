@@ -35,7 +35,7 @@
 #define log_err(format, ...)                                                   \
   fprintf(stderr, "[n-c-m preload patch] " format, __VA_ARGS__)
 
-bool url_is_flac(const char *url) {
+static bool url_is_flac(const char *url) {
   const char *suffix = "\0";
 
   for (int i = (int)(strlen(url) - 1); i >= 0; --i) {
@@ -60,6 +60,7 @@ VLC_API int vlc_stream_vaControl(stream_t *s, int query, va_list args) {
   }
 
   if (query == STREAM_GET_CONTENT_TYPE && url_is_flac(s->psz_url)) {
+    // duplicated string will be freed by consumer
     *va_arg(args, char **) = strdup("audio/flac");
     return VLC_SUCCESS;
   } else {
