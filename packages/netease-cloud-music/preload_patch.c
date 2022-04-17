@@ -2,7 +2,7 @@
  * Credits: https://blog.eh5.me/fix-ncm-flac-playing
  *          https://aur.archlinux.org/cgit/aur.git/tree/patch.c?h=netease-cloud-music
  *
- * I don't think this deserve a copyright, but in case you want a license:
+ * I don't think this deserve any copyright, but in case you want a license:
  * -------------------------------------------------------------------
  *
  *            DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE
@@ -24,6 +24,7 @@
 
 #include <dlfcn.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 #include <strings.h>
 

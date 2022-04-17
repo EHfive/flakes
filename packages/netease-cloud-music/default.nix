@@ -60,7 +60,6 @@ stdenv.mkDerivation {
     "--prefix LD_PRELOAD : ${preloadPatch}/n-c-m-patch.so"
     "--suffix XCURSOR_PATH : /usr/share/icons"
     "--set QT_XKB_CONFIG_ROOT ${xorg.xkeyboardconfig}/share/X11/xkb"
-    "--set QT_XCB_GL_INTEGRATION none"
   ];
 
   meta = {
