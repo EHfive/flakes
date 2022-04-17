@@ -1,18 +1,21 @@
 let
   utils = import ../utils;
+  extraPackages = pkgs: {
+    sources = pkgs.callPackage ./_sources/generated.nix { };
+  };
   allPackages = pkgs:
     let
       callPackage = fn: args:
         utils.ifTrueWithOr
           (utils.checkPlatform pkgs.system)
           (pkgs.lib.callPackageWith
-            (pkgs // { sources = pkgs.callPackage ./_sources/generated.nix { }; })
+            (pkgs // extraPackages pkgs)
             fn
             args
           )
           null;
     in
-    (import ./packages.nix) { inherit callPackage; };
+    (import ./packages.nix { inherit callPackage; });
 in
 rec {
   packages = pkgs: builtins.foldl'
@@ -23,6 +26,11 @@ rec {
     )
     { }
     (builtins.attrNames (allPackages pkgs));
+
+  nurPackages = pkgs: (import ./packages.nix {
+    callPackage = pkgs.lib.callPackageWith
+      (pkgs // extraPackages pkgs // nurPackages pkgs);
+  });
 
   overlays.default = final: prev: allPackages final;
 
