@@ -26,6 +26,7 @@
   documentation.man.enable = true;
   documentation.dev.enable = false;
   documentation.doc.enable = false;
+  documentation.nixos.enable = false;
 
   programs.command-not-found.enable = true;
   programs.vim.defaultEditor = true;
