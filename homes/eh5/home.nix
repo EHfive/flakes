@@ -23,6 +23,7 @@ in
         "eh5.cachix.org-1:pNWZ2OMjQ8RYKTbMsiU/AjztyyC8SwvxKOf6teMScKQ="
       ];
       experimental-features = [ "nix-command" "flakes" ];
+      warn-dirty = false;
     };
   };
 
@@ -38,9 +39,9 @@ in
   home.packages = with pkgs; [
     cachix
     clang14-tools
-    rnix-lsp
-    ssh-to-age
     netease-cloud-music
     nixgl.nixGLIntel
+    rnix-lsp
+    ssh-to-age
   ];
 }
