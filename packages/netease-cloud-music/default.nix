@@ -59,7 +59,7 @@ stdenv.mkDerivation {
     "--prefix LD_LIBRARY_PATH : ${libudev0-shim}/lib"
     "--prefix LD_PRELOAD : ${preloadPatch}/n-c-m-patch.so"
     # workaround for non-NixOS
-    "--suffix XCURSOR_PATH : /usr/share/icons:/usr/share/pixmaps"
+    "--suffix XCURSOR_PATH : ~/.local/share/icons:~/.icons:/usr/share/icons:/usr/share/pixmaps"
     "--set QT_XKB_CONFIG_ROOT ${xorg.xkeyboardconfig}/share/X11/xkb"
   ];
 
