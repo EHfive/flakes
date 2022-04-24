@@ -30,6 +30,10 @@ in
   programs.home-manager.enable = true;
   programs.man.enable = false;
 
+  systemd.user.tmpfiles.rules = [
+    "d %C/netease-cloud-music/CachedSongs - - - 5d -"
+  ];
+
   targets.genericLinux.enable = true;
 
   xdg.mime.enable = false;
