@@ -49,6 +49,7 @@
     };
     blacklistedKernelModules = [ "hantro_vpu" "drm" "lima" "videodev" ];
     kernelModules = [ "ledtrig-netdev" ];
+    tmpOnTmpfs = true;
   };
 
   boot.kernel.sysctl = {
