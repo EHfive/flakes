@@ -8,7 +8,7 @@
   nix = {
     settings = {
       substituters = lib.mkForce [
-        "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store"
+        "https://mirrors.ustc.edu.cn/nix-channels/store"
         "https://cache.nixos.org"
         "https://eh5.cachix.org"
       ];
@@ -57,7 +57,6 @@
     iperf2
     lm_sensors
     lsof
-    nix-du
     nodejs-17_x
     usbutils
   ] ++ (with config.boot.kernelPackages; [

@@ -57,7 +57,7 @@
     "vm.swappiness" = 20;
   };
 
-  powerManagement.cpuFreqGovernor = "powersave";
+  powerManagement.cpuFreqGovernor = "schedutil";
 
   services.fake-hwclock.enable = true;
 
