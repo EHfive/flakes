@@ -19,7 +19,7 @@ let
   mosdns = buildGoModule {
     pname = "mosdns";
     inherit (sources.mosdns) version src;
-    vendorSha256 = "2AF3ONhD6xH6m6QFmxRBUNsk6Nd8yrXVyCFjhDJDFx4=";
+    vendorSha256 = "sha256-P9NLdNh1DiPoq8N3c1cUZVb8p4uStDO+HQTXzO1oJJw=";
     doCheck = false;
 
     buildPhase = ''

@@ -40,11 +40,11 @@
             "name": null,
             "owner": "IrineSistiana",
             "repo": "mosdns",
-            "rev": "v3.7.2",
-            "sha256": "sha256-bXqj2SF0y+uj0RPKz8DlF9qYdNq01VFl19tlJbeqhVw=",
+            "rev": "v3.7.3",
+            "sha256": "sha256-ZywhZxsib3rnIzrkrjAKpV9sRE0PCFXeHB1NJ6/tKCg=",
             "type": "github"
         },
-        "version": "v3.7.2"
+        "version": "v3.7.3"
     },
     "v2ray": {
         "cargoLocks": null,
