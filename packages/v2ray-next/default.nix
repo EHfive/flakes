@@ -17,7 +17,7 @@ let
 
   core = buildGoModule rec {
     inherit (sources.v2ray) pname version src;
-    vendorSha256 = "TaDAXgAicXm6x1qeXQR7/t9bRjy++fI3/uKlXrejVz8=";
+    vendorSha256 = "sha256-jl0lu9z8wRaqRL4rhlk+VD8FEaJlwvpvoXIfNwOgR2Y=";
 
     doCheck = false;
 
