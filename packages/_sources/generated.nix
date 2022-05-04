@@ -3,18 +3,18 @@
 {
   geoip-dat = {
     pname = "geoip-dat";
-    version = "202205022212";
+    version = "202205032212";
     src = fetchurl {
-      url = "https://github.com/Loyalsoldier/v2ray-rules-dat/releases/download/202205022212/geoip.dat";
+      url = "https://github.com/Loyalsoldier/v2ray-rules-dat/releases/download/202205032212/geoip.dat";
       sha256 = "sha256-UmIgU12Tte6goa5/dsKOyq6JKdEi4bbzbfyL8eKUp2g=";
     };
   };
   geosite-dat = {
     pname = "geosite-dat";
-    version = "202205022212";
+    version = "202205032212";
     src = fetchurl {
-      url = "https://github.com/Loyalsoldier/v2ray-rules-dat/releases/download/202205022212/geosite.dat";
-      sha256 = "sha256-YRSmGtY7Y6tfeJ10i3JnVf5H7T5pM1Tt/4mqnMo5KX8=";
+      url = "https://github.com/Loyalsoldier/v2ray-rules-dat/releases/download/202205032212/geosite.dat";
+      sha256 = "sha256-U5ROdlu2daJQhq6Q5ysmH8ff/f0eu3/4qmj1efvRMi0=";
     };
   };
   mosdns = {
@@ -30,13 +30,13 @@
   };
   v2ray = {
     pname = "v2ray";
-    version = "v5.0.5";
+    version = "v5.0.6";
     src = fetchFromGitHub ({
       owner = "v2fly";
       repo = "v2ray-core";
-      rev = "v5.0.5";
+      rev = "v5.0.6";
       fetchSubmodules = false;
-      sha256 = "sha256-xelzsV0l6d4m8ufaIGbC3sE+M6F1ILR5N4vOEiqEfmU=";
+      sha256 = "sha256-eseNLX9V12ZhMUEXPVP9XhvZHlJlsOqhaNY5/HS3bKs=";
     });
   };
 }
