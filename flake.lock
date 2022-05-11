@@ -79,7 +79,9 @@
     },
     "nixgl": {
       "inputs": {
-        "nixpkgs": "nixpkgs"
+        "nixpkgs": [
+          "nixpkgs"
+        ]
       },
       "locked": {
         "lastModified": 1651078744,
@@ -96,20 +98,6 @@
       }
     },
     "nixpkgs": {
-      "locked": {
-        "lastModified": 1652133925,
-        "narHash": "sha256-kfATGChLe9/fQVZkXN9G71JAVMlhePv1qDbaRKklkQs=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "51d859cdab1ef58755bd342d45352fc607f5e59b",
-        "type": "github"
-      },
-      "original": {
-        "id": "nixpkgs",
-        "type": "indirect"
-      }
-    },
-    "nixpkgs_2": {
       "locked": {
         "lastModified": 1652172129,
         "narHash": "sha256-8e2JMrswaKe02P8rYfvIMoc59pNuw6h/GYu8DBE1c+0=",
@@ -158,7 +146,7 @@
         "flake-utils": "flake-utils",
         "home-manager": "home-manager",
         "nixgl": "nixgl",
-        "nixpkgs": "nixpkgs_2",
+        "nixpkgs": "nixpkgs",
         "nvfetcher": "nvfetcher",
         "sops-nix": "sops-nix"
       }
