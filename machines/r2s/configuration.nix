@@ -58,7 +58,6 @@
     iperf2
     lm_sensors
     lsof
-    nodejs_latest
     screen
     usbutils
   ] ++ (with config.boot.kernelPackages; [
