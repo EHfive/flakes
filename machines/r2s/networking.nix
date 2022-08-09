@@ -78,4 +78,19 @@
     };
     linkConfig.ActivationPolicy = "always-up";
   };
+
+  systemd.targets.network-if-appeared =
+    let
+      ifNames = [ "intern0" "extern0" ];
+      afterNetDevices = (builtins.map
+        (name: "sys-subsystem-net-devices-${name}.device")
+        ifNames
+      );
+    in
+    {
+      wants = afterNetDevices;
+      after = afterNetDevices;
+      wantedBy = [ "network-pre.target" ];
+      before = [ "network-pre.target" ];
+    };
 }
