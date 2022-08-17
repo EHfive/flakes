@@ -44,7 +44,6 @@ in
     cachix
     clang14-tools
     netease-cloud-music
-    nixgl.nixGLIntel
     rnix-lsp
     ssh-to-age
   ];
