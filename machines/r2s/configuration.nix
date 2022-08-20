@@ -6,7 +6,10 @@
     sopsFile = ./secrets/mosdns.yaml.sops;
   };
   sops.secrets.tproxyRule.sopsFile = ./secrets/tproxy.nft.sops;
-  sops.secrets.v2rayConfig.sopsFile = ./secrets/v2ray.v4.json.sops;
+  sops.secrets.v2rayConfig = {
+    name = "v2ray.json";
+    sopsFile = ./secrets/v2ray.v4.json.sops;
+  };
 
   nix = {
     settings = {
