@@ -68,7 +68,7 @@
     f2fs-tools
     file
     htop
-    iperf2
+    iperf
     lm_sensors
     lsof
     screen
