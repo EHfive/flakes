@@ -10,6 +10,10 @@
     bantime-increment.overalljails = true;
   };
   services.fail2ban.jails = {
+    # OpenLDAP
+    slapd = ''
+      enabled = true
+    '';
     dovecot = ''
       enabled = true
     '';

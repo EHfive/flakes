@@ -111,8 +111,8 @@ in
     }
 
     passdb {
-      driver = passwd-file
-      args = ${secrets.passwdFile.path}
+      driver = ldap
+      args = ${secrets.passdbLdap.path}
     }
 
     userdb {
@@ -166,7 +166,7 @@ in
 
     plugin {
       sieve_plugins = sieve_imapsieve sieve_extprograms
-      sieve_default_name = default
+      # sieve = ldap:''${secrets.sieveLdap.path};bindir=''${stateDir}/sieve_bin
 
       # From elsewhere to Spam folder
       imapsieve_mailbox1_name = Junk
@@ -185,13 +185,28 @@ in
     }
   '';
 
-  systemd.services.dovecot2.preStart = ''
-    rm -rf '${stateDir}/imap_sieve'
-    mkdir '${stateDir}/imap_sieve'
-    cp -p "${./files/imap_sieve}"/*.sieve '${stateDir}/imap_sieve/'
-    for k in "${stateDir}/imap_sieve"/*.sieve ; do
-      ${pkgs.dovecot_pigeonhole}/bin/sievec "$k"
-    done
-    chown -R '${dovecot2Cfg.mailUser}:${dovecot2Cfg.mailGroup}' '${stateDir}/imap_sieve'
-  '';
+  systemd.services.dovecot2 = {
+    requires = [ "openldap.service" ];
+    after = [ "openldap.service" ];
+    preStart = ''
+      rm -rf '${stateDir}/imap_sieve'
+      mkdir '${stateDir}/imap_sieve'
+      cp -p "${./files/imap_sieve}"/*.sieve '${stateDir}/imap_sieve/'
+      for k in "${stateDir}/imap_sieve"/*.sieve ; do
+        ${pkgs.dovecot_pigeonhole}/bin/sievec "$k"
+      done
+      chown -R '${dovecot2Cfg.mailUser}:${dovecot2Cfg.mailGroup}' '${stateDir}/imap_sieve'
+    '';
+  };
+
+  # nixpkgs.overlays = [
+  #   (
+  #     final: prev: {
+  #       dovecot_pigeonhole = prev.dovecot_pigeonhole.overrideAttrs (_: attrs: {
+  #         buildInputs = attrs.buildInputs ++ [ pkgs.openldap pkgs.cyrus_sasl ];
+  #         configureFlags = attrs.configureFlags ++ [ "--with-ldap=yes" ];
+  #       });
+  #     }
+  #   )
+  # ];
 }
