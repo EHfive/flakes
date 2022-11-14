@@ -13,6 +13,7 @@ in
       acmeEnv = { };
       postScript = { mode = "0500"; };
       trustedNetworks = { };
+      bindDnPw = { };
       passdbLdap.owner = dovecotUser;
       # sieveLdap = { mode = "440"; owner = dovecotUser; };
       vaccountLdap.owner = postfixUser;
@@ -56,9 +57,13 @@ in
     };
   };
   nixpkgs.config.allowUnfree = true;
-  system.stateVersion = config.system.nixos.release;
+  system.stateVersion = "22.05";
 
   networking.hostName = "srv-m";
+  networking.hosts = {
+    "127.0.0.1" = [ "mx.eh5.me" ];
+    "::1" = [ "mx.eh5.me" ];
+  };
 
   time.timeZone = "Asia/Shanghai";
 

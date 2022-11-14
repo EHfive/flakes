@@ -20,7 +20,7 @@ in
   };
   services.openldap.settings = {
     attrs = {
-      olcLogLevel = [ "stats" ];
+      olcLogLevel = [ "0" ];
       olcTLSCertificateFile = "${acmeCert.directory}/cert.pem";
       olcTLSCertificateKeyFile = "${acmeCert.directory}/key.pem";
     };
@@ -30,6 +30,7 @@ in
         "${openldap}/etc/schema/cosine.ldif"
         "${openldap}/etc/schema/inetorgperson.ldif"
         ./files/postfix-book.ldif
+        ./files/mozilla-address-book.ldif
       ];
       "olcDatabase={-1}frontend" = {
         attrs = {

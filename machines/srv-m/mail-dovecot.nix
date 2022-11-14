@@ -34,8 +34,8 @@ in
     sslServerCert = cfg.certFile;
     sslServerKey = cfg.keyFile;
     modules = [ pkgs.dovecot_pigeonhole ];
-    mailPlugins.globally.enable = [ "zlib" "mail_crypt" "listescape" "notify" "mail_log" ];
-    mailPlugins.perProtocol.imap.enable = [ "imap_zlib" "imap_sieve" ];
+    mailPlugins.globally.enable = [ "acl" "zlib" "mail_crypt" "listescape" "notify" "mail_log" ];
+    mailPlugins.perProtocol.imap.enable = [ "imap_acl" "imap_zlib" "imap_sieve" ];
     mailPlugins.perProtocol.lmtp.enable = [ "sieve" ];
     mailboxes = {
       Trash = {
@@ -101,6 +101,9 @@ in
     haproxy_trusted_networks = <${secrets.trustedNetworks.path}
 
     plugin {
+      acl = vfile
+      acl_shared_dict = file:/var/vmail/shared-mailboxes.db
+
       listescape_char = "\\"
 
       mail_crypt_global_private_key = <${secrets.mailCryptPrivKey.path}
