@@ -79,7 +79,7 @@ in
   services.openssh = {
     enable = true;
     permitRootLogin = "yes";
-    ports = lib.mkForce [ 8080 ];
+    ports = lib.mkForce [ 8022 ];
   };
 
   system.autoUpgrade = {
