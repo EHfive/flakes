@@ -21,7 +21,7 @@ let
     stalwart-imap = callPackage ./stalwart-imap { };
     stalwart-jmap = callPackage ./stalwart-jmap { };
     ubootNanopiR2s = callPackage ./uboot-nanopi-r2s { };
-    v2ray-next = callPackage ./v2ray-next { buildGoModule = pkgs.buildGo119Module; };
+    v2ray-next = callPackage ./v2ray-next { buildGoModule = pkgs.buildGo120Module; };
     vlmcsd = callPackage ./vlmcsd { };
   };
   self_extra = lib.optionalAttrs
