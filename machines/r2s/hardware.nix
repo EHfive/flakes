@@ -45,7 +45,7 @@
         configurationLimit = 3;
       };
     };
-    kernelPackages = pkgs.linuxPackages_latest;
+    kernelPackages = pkgs.linuxPackages;
     kernelParams = [
       "console=ttyS2,1500000"
       "earlycon=uart8250,mmio32,0xff130000"
@@ -67,6 +67,8 @@
   };
 
   powerManagement.cpuFreqGovernor = "schedutil";
+
+  services.lvm.enable = false;
 
   services.timesyncd.extraConfig = ''
     PollIntervalMinSec=16
