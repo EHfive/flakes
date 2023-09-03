@@ -1,12 +1,12 @@
 { config, pkgs, lib, ... }: {
-  hardware.deviceTree.name = "rockchip/rk3328-nanopi-r2s.dtb";
+  # hardware.deviceTree.name = "rockchip/rk3328-nanopi-r2s.dtb";
   # hardware.deviceTree.filter = "*rk3328-nanopi-r2s.dtb";
   # hardware.deviceTree.overlays = [{
   #   name = "sysled";
   #   dtsFile = ./files/sysled.dts;
   # }];
 
-  # nanopi r2s's DTS has not been actively updated, so just use the prebuilt one to avoid rebuild
+  # NanoPi R2S's DTS has not been actively updated, so just use the prebuilt one to avoid rebuilding
   hardware.deviceTree.package = pkgs.lib.mkForce (
     pkgs.runCommand "dtbs-nanopi-r2s" { } ''
       install -TDm644 ${./files/rk3328-nanopi-r2s.dtb} $out/rockchip/rk3328-nanopi-r2s.dtb
@@ -17,7 +17,10 @@
     (pkgs.runCommand
       "linux-firmware-r8152"
       { }
-      "install -TDm644 ${./files/rtl8153a-4.fw} $out/lib/firmware/rtl_nic/rtl8153a-4.fw"
+      ''
+        install -TDm644 ${./files/rtl8153a-4.fw} $out/lib/firmware/rtl_nic/rtl8153a-4.fw
+        install -TDm644 ${./files/rtl8153b-2.fw} $out/lib/firmware/rtl_nic/rtl8153b-2.fw
+      ''
     )
   ];
 
