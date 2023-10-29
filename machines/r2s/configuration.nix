@@ -1,14 +1,25 @@
 { config, pkgs, lib, ... }:
 {
-  sops.defaultSopsFormat = "binary";
-  sops.secrets.mosdnsConfig = {
-    name = "mosdns.yaml";
-    sopsFile = ./secrets/mosdns.yaml.sops;
-  };
-  sops.secrets.tproxyRule.sopsFile = ./secrets/tproxy.nft.sops;
-  sops.secrets.v2rayConfig = {
-    name = "v2ray.json";
-    sopsFile = ./secrets/v2ray.v5.json.sops;
+  sops = {
+    defaultSopsFormat = "yaml";
+    defaultSopsFile = ./secrets/secrets.sops.yaml;
+    secrets = {
+      "shadow-tls.json" = { };
+      mosdnsConfig = {
+        name = "mosdns.yaml";
+        format = "binary";
+        sopsFile = ./secrets/mosdns.yaml.sops;
+      };
+      tproxyRule = {
+        format = "binary";
+        sopsFile = ./secrets/tproxy.nft.sops;
+      };
+      v2rayConfig = {
+        name = "v2ray.json";
+        format = "binary";
+        sopsFile = ./secrets/v2ray.v5.json.sops;
+      };
+    };
   };
 
   nix = {

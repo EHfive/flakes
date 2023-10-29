@@ -64,6 +64,7 @@
               lib.getAttrs
                 [
                   "mosdns"
+                  "shadow-tls"
                   "sops-install-secrets-nonblock"
                   "ubootNanopiR2s"
                   "v2ray-next"

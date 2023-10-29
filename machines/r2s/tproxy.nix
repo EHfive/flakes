@@ -37,6 +37,18 @@ in
   services.v2ray-rules-dat.reloadServices = [ "v2ray-next.service" ];
   sops.secrets.v2rayConfig.restartUnits = [ "v2ray-next.service" ];
 
+  services.shadow-tls = {
+    enable = true;
+    configFile = config.sops.secrets."shadow-tls.json".path;
+  };
+  systemd.services.shadow-tls = {
+    serviceConfig = {
+      Environment = [ "RUST_LOG=warn" ];
+      SupplementaryGroups = [ config.users.groups.direct-net.name ];
+    };
+  };
+  sops.secrets."shadow-tls.json".restartUnits = [ "shadow-tls.service" ];
+
   systemd.services.setup-tproxy = {
     unitConfig.ReloadPropagatedFrom = [ "nftables.service" ];
     bindsTo = [ "nftables.service" ];

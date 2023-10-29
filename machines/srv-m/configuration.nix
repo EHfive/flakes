@@ -9,7 +9,7 @@ in
 {
   sops = {
     defaultSopsFormat = "yaml";
-    defaultSopsFile = ./secrets/secrets.yaml;
+    defaultSopsFile = ./secrets/secrets.sops.yaml;
     secrets = {
       acmeEnv = { };
       postScript = { mode = "0500"; owner = "acme"; };
