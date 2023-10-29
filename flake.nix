@@ -10,6 +10,11 @@
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    fenix_shadow-tls = {
+      # use nightly-2023-05-18
+      url = "github:nix-community/fenix/8a69206e50ca6a2cc4ae7a22eef4bfcbe6dbc9f6";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     flake-compat = {
       url = "github:edolstra/flake-compat";
       flake = false;
