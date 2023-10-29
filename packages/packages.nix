@@ -10,7 +10,6 @@ let
   self_base = {
     dovecot-fts-flatcurve = callPackage ./dovecot-fts-flatcurve { };
     fake-hwclock = callPackage ./fake-hwclock { };
-    hev-socks5-tproxy = callPackage ./hev-socks5-tproxy { };
     libnftnl-fullcone = callPackage ./libnftnl-fullcone { };
     mosdns = callPackage ./mosdns { buildGoModule = pkgs.buildGo121Module; };
     # end of service
