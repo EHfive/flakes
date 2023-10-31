@@ -18,7 +18,6 @@ let
     nftables-fullcone = callPackage ./nftables-fullcone { };
     nix-gfx-mesa = callPackage ./nix-gfx-mesa { };
     qcef = callPackage ./qcef { };
-    shadow-tls = callPackage ./shadow-tls { };
     stalwart-cli = callPackage ./stalwart-cli { };
     stalwart-imap = callPackage ./stalwart-imap { };
     stalwart-jmap = callPackage ./stalwart-jmap { };
@@ -27,7 +26,7 @@ let
     vlmcsd = callPackage ./vlmcsd { };
   };
 
-  self_extra = sops-nix_pkgs // shadow-tls_pkgs;
+  self_extra = sops-nix_pkgs;
 
   sops-nix_pkgs = lib.optionalAttrs
     (lib.hasAttrByPath [ system "sops-install-secrets" ] inputs.sops-nix.packages)
@@ -36,18 +35,6 @@ let
         inherit (inputs.sops-nix.packages.${system}) sops-install-secrets;
       };
     }
-  ;
-  shadow-tls_pkgs = lib.optionalAttrs
-    (lib.hasAttrByPath [ system "minimal" "toolchain" ] inputs.fenix_shadow-tls.packages)
-    (
-      let
-        inherit (inputs.fenix_shadow-tls.packages.${system}.minimal) toolchain;
-        rustPlatform = pkgs.makeRustPlatform { cargo = toolchain; rustc = toolchain; };
-      in
-      {
-        shadow-tls = callPackage ./shadow-tls { inherit rustPlatform; };
-      }
-    )
   ;
 in
 if filterByPlatform
