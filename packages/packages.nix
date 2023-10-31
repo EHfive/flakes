@@ -19,7 +19,6 @@ let
     nix-gfx-mesa = callPackage ./nix-gfx-mesa { };
     qcef = callPackage ./qcef { };
     shadow-tls = callPackage ./shadow-tls { };
-    sing-box-alt = callPackage ./sing-box-alt {  };
     stalwart-cli = callPackage ./stalwart-cli { };
     stalwart-imap = callPackage ./stalwart-imap { };
     stalwart-jmap = callPackage ./stalwart-jmap { };

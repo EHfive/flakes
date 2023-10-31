@@ -4,20 +4,10 @@
     defaultSopsFormat = "yaml";
     defaultSopsFile = ./secrets/secrets.sops.yaml;
     secrets = {
-      mosdnsConfig = {
-        name = "mosdns.yaml";
-        format = "binary";
-        sopsFile = ./secrets/mosdns.yaml.sops;
-      };
-      tproxyRule = {
-        format = "binary";
-        sopsFile = ./secrets/tproxy.nft.sops;
-      };
-      v2rayConfig = {
-        name = "v2ray.json";
-        format = "binary";
-        sopsFile = ./secrets/v2ray.v5.json.sops;
-      };
+      "sb-config.json" = {};
+      "mosdns.yaml" = {};
+      "tproxy.nft" = {};
+      "v2ray.v5.json" = {};
     };
   };
 

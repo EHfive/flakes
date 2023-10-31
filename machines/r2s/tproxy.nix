@@ -5,7 +5,7 @@ let
     #!${nftBin} -f
     table ip my_tproxy {}
     flush table ip my_tproxy
-    include "${config.sops.secrets.tproxyRule.path}"
+    include "${config.sops.secrets."tproxy.nft".path}"
   '';
   stopScript = pkgs.writeScript "setup-tproxy-stop" ''
     #!${nftBin} -f
@@ -91,7 +91,7 @@ in
     };
     reloadIfChanged = true;
   };
-  sops.secrets.tproxyRule.reloadUnits = [ "setup-tproxy.service" ];
+  sops.secrets."tproxy.nft".reloadUnits = [ "setup-tproxy.service" ];
 
   systemd.services.update-chnroutes = {
     serviceConfig.Type = "oneshot";

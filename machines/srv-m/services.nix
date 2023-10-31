@@ -35,7 +35,7 @@ in
   services.v2ray-next = {
     enable = true;
     useV5Format = true;
-    configFile = config.sops.secrets.v2rayConfig.path;
+    configFile = secrets."v2ray.v5.json".path;
   };
   systemd.services.v2ray-next.requires = [ "acme-finished-${certName}.target" ];
 
