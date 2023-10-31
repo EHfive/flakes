@@ -26,7 +26,6 @@ lib.nixosSystem rec {
       ];
       system.enableExtlinuxTarball = true;
       sops.package = sops-install-secrets-nonblock;
-      services.shadow-tls.package = shadow-tls;
     }
   ];
 }

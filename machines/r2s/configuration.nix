@@ -4,7 +4,6 @@
     defaultSopsFormat = "yaml";
     defaultSopsFile = ./secrets/secrets.sops.yaml;
     secrets = {
-      "shadow-tls.json" = { };
       mosdnsConfig = {
         name = "mosdns.yaml";
         format = "binary";
@@ -87,6 +86,7 @@
     screen
     tcpdump
     usbutils
+    sing-box
   ] ++ (with config.boot.kernelPackages; [
     cpupower
   ]);
