@@ -1,5 +1,6 @@
 let
   modules = {
+    einat = import ./einat;
     fake-hwclock = import ./fake-hwclock;
     mosdns = import ./mosdns;
     nftables-fullcone = import ./nftables-fullcone;
