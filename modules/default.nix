@@ -6,7 +6,6 @@ let
     nftables-fullcone = import ./nftables-fullcone;
     shadow-tls = import ./shadow-tls;
     system-tarball-extlinux = import ./system-tarball-extlinux;
-    v2ray-next = import ./v2ray-next;
     v2ray-rules-dat = import ./v2ray-rules-dat;
     vlmcsd = import ./vlmcsd;
   };
