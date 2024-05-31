@@ -64,7 +64,7 @@
       $out/bin/haveged --version
     '';
     # provide entropy with haveged in stage 1 for faster crng init
-    postDeviceCommands = ''
+    preLVMCommands = lib.mkBefore ''
       haveged --once
     '';
   };
