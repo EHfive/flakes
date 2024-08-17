@@ -82,38 +82,6 @@
 
   services.lvm.enable = false;
 
-  services.timesyncd.extraConfig = ''
-    PollIntervalMinSec=16
-    PollIntervalMaxSec=180
-    ConnectionRetrySec=3
-  '';
-  systemd.additionalUpstreamSystemUnits = [
-    "systemd-time-wait-sync.service"
-  ];
-  services.fake-hwclock.enable = true;
-  networking.timeServers = [
-    "ntp.aliyun.com"
-    "ntp1.aliyun.com"
-    "ntp2.aliyun.com"
-    "ntp3.aliyun.com"
-    "ntp4.aliyun.com"
-    "ntp5.aliyun.com"
-    "ntp6.aliyun.com"
-    "ntp7.aliyun.com"
-  ];
-
-  systemd.services."systemd-networkd" = {
-    serviceConfig = {
-      # avoid infinity restarting,
-      # we want to tty into the system as network is not functional
-      Restart = "no";
-    };
-  };
-  systemd.network.wait-online = {
-    ignoredInterfaces = [ "tun0" ];
-    timeout = 20;
-  };
-
   systemd.services."wait-system-running" = {
     description = "Wait system running";
     serviceConfig = { Type = "simple"; };
