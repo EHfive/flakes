@@ -56,6 +56,7 @@
 
   boot.initrd = {
     includeDefaultModules = false;
+    kernelModules = [ "mmc_block" ];
     extraUtilsCommands = ''
       copy_bin_and_libs ${pkgs.haveged}/bin/haveged
     '';
@@ -65,6 +66,8 @@
     # provide entropy with haveged in stage 1 for faster crng init
     preLVMCommands = lib.mkBefore ''
       haveged --once
+      # I don't need LVM
+      alias lvm=true
     '';
   };
 
