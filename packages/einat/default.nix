@@ -12,17 +12,17 @@
 }:
 rustPlatform.buildRustPackage rec {
   pname = "einat";
-  version = "0.1.6";
+  version = "0.1.7";
 
   src = fetchFromGitHub {
     owner = "EHfive";
     repo = "einat-ebpf";
     rev = "v${version}";
-    hash = "sha256-qkl54yGbvYxWj1+qPEWjZEhTPNzGecjpkdkSx67aarQ=";
+    hash = "sha256-6fYUh0H4ForA9DKFkMs7OLGrRGQGVT1xzRNl/AHslnA=";
   };
 
   useFetchCargoVendor = true;
-  cargoHash = "sha256-+TXQ6AmPeTVNV5nmL+TJTMX9VgmKY0HASeZxj97y5+A=";
+  cargoHash = "sha256-KZRwlyRY2tZA5zgIpPDRTuhoxGuwr9qIyq8xrijcYfM=";
 
   nativeBuildInputs = [
     pkg-config
