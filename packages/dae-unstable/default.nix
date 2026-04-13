@@ -20,7 +20,7 @@ buildGoModule (finalAttrs: {
     fetchSubmodules = true;
   };
 
-  vendorHash = "sha256-MJVmAg+xyS53295FZ5HYB4rfbWHjUFBkxIOBxqxQP3U=";
+  vendorHash = "sha256-juxIsZt1T33epN8CbzDc02MmlW5PtYa4pcGxuX9OpH4=";
 
   proxyVendor = true;
 
