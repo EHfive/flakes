@@ -199,11 +199,13 @@ in
     persist
     maxfail 0
     holdoff 5
+    lcp-echo-failure 5
+    lcp-echo-interval 1
     defaultroute
     defaultroute-metric 1
-    default-asyncmap
     noauth
     noaccomp
+    nopcomp
     noremoteip
     noipdefault
     nodetach
@@ -254,10 +256,6 @@ in
       UseHostname = false;
       UseDomains = false;
     };
-    extraConfig = ''
-      [CAKE]
-      Parent=root
-    '';
   };
 
   systemd.services."tweak-network-settings" = {
