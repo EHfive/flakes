@@ -118,8 +118,8 @@ in
       RxBufferSize = 1024;
       TxBufferSize = 1024;
       TransmitQueueLength = 2000;
-      TCPSegmentationOffload = false;
-      TCP6SegmentationOffload = false;
+      # TCPSegmentationOffload = false;
+      # TCP6SegmentationOffload = false;
     };
   };
 
@@ -130,8 +130,8 @@ in
       MACAddress = "ea:ce:b4:a1:ce:94";
       RxBufferSize = 4096;
       TransmitQueueLength = 2000;
-      TCPSegmentationOffload = false;
-      TCP6SegmentationOffload = false;
+      # TCPSegmentationOffload = false;
+      # TCP6SegmentationOffload = false;
     };
   };
 
